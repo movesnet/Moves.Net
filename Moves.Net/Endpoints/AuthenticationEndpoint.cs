@@ -1,9 +1,5 @@
-﻿using Moves.Net.Model.Authentication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using System.Net;
+using Moves.Net.Model;
 
 namespace Moves.Net.Endpoints
 {

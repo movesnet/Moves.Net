@@ -10,9 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Moves.Net</RootNamespace>
     <AssemblyName>Moves.Net</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,10 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
+    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -53,23 +51,23 @@
     <Compile Include="Endpoints\PlacesEndpoint.cs" />
     <Compile Include="Endpoints\AuthenticationEndpoint.cs" />
     <Compile Include="Endpoints\EndpointBase.cs" />
-    <Compile Include="Model\Authentication\AccessTokenData.cs" />
-    <Compile Include="Model\Authentication\AccessTokenValidation.cs" />
+    <Compile Include="Model\AccessTokenData.cs" />
+    <Compile Include="Model\AccessTokenValidation.cs" />
     <Compile Include="Credentials.cs" />
-    <Compile Include="Model\ErrorResource.cs" />
-    <Compile Include="Model\Places\Place.cs" />
-    <Compile Include="Model\Places\Segment.cs" />
-    <Compile Include="Model\Places\Day.cs" />
-    <Compile Include="Model\Places\Location.cs" />
+    <Compile Include="Model\Error.cs" />
+    <Compile Include="Model\Place.cs" />
+    <Compile Include="Model\Segment.cs" />
+    <Compile Include="Model\Day.cs" />
+    <Compile Include="Model\Location.cs" />
     <Compile Include="MovesException.cs" />
     <Compile Include="MovesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

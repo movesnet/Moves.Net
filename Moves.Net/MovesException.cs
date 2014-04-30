@@ -1,10 +1,7 @@
-﻿using Moves.Net.Model;
+﻿using System;
+using Moves.Net.Model;
 using Newtonsoft.Json;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Moves.Net
 {
@@ -12,7 +9,7 @@ namespace Moves.Net
 	public class MovesException : Exception
 	{
 		public static MovesException FromErrorResponse(IRestResponse response) {
-			var error = JsonConvert.DeserializeObject<ErrorResource>(response.Content);
+			var error = JsonConvert.DeserializeObject<Error>(response.Content);
 
 			return new MovesException(error.Code);
 		}

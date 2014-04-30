@@ -1,11 +1,4 @@
 ﻿using Moves.Net.Endpoints;
-using Moves.Net.Model.Authentication;
-using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Contrib;
-using RestSharp.Deserializers;
-using System.Linq;
-using System.Net;
 
 namespace Moves.Net
 {

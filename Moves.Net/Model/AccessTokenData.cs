@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Moves.Net.Model.Authentication
+namespace Moves.Net.Model
 {
 	[JsonObject]
 	public class AccessTokenData
