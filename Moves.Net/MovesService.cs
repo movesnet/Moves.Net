@@ -4,21 +4,28 @@ namespace Moves.Net
 {
     public class MovesService
 	{
-        private Credentials _credentials;
+        public Credentials Credentials { get; set; }
+
 		public MovesService(string clientId, string clientSecret, string accessToken = null)
 		{
-            _credentials = new Credentials
+			this.Credentials = new Credentials
             {
                 ClientId = clientId,
                 ClientSecret = clientSecret,
                 AccessToken = accessToken
             };
 
-            Authentication = new AuthenticationEndpoint(_credentials);
-            Places = new PlacesEndpoint(_credentials);
+			Authentication = new AuthenticationEndpoint(this.Credentials);
+			Places = new PlacesEndpoint(this.Credentials);
 		}
         
         public AuthenticationEndpoint Authentication { get; private set; }
         public PlacesEndpoint Places { get; private set; }
+
+		public MovesService Authorize(string accessToken)
+		{
+			this.Credentials.AccessToken = accessToken;
+			return this;
+		}
 	}
 }

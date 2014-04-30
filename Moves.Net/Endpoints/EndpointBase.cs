@@ -8,7 +8,7 @@ namespace Moves.Net.Endpoints
 {  
     public abstract class EndpointBase
     {
-        public Credentials Credentials { get; private set; }
+        protected Credentials Credentials { get; private set; }
         public static string MovesAuthenticationBaseUrl = "https://api.moves-app.com/oauth/v1/";
         public static string MovesApiBaseUrl = "https://api.moves-app.com/api/1.1/";
 
