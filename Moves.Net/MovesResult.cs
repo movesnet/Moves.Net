@@ -11,15 +11,6 @@ namespace Moves.Net
 {
 	public class MovesResult<T>
 	{
-		private static T DeserializeContent<T>(IRestResponse response)
-		{
-			return DeserializeContent<T>(response.Content);
-		}
-		private static T DeserializeContent<T>(string content)
-		{
-			return JsonConvert.DeserializeObject<T>(content);
-		}
-
 		public MovesResult(IRestResponse response)
 		{
 			ETag = response.Headers.Where(x => x.Name == "ETag").Select(x => x.Value.ToString()).FirstOrDefault();
@@ -31,7 +22,7 @@ namespace Moves.Net
 			}
 			else if (response.StatusCode != HttpStatusCode.NotModified)
 			{
-				Data = DeserializeContent<T>(response);
+				Data = JsonConvert.DeserializeObject<T>(response.Content);
 			}
 		}
 
