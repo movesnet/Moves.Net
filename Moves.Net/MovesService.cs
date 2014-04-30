@@ -24,10 +24,16 @@ namespace Moves.Net
         public PlacesEndpoint Places { get; private set; }
 		public ProfileEndpoint Profile { get; private set; }
 
-		public MovesService Authorize(string accessToken)
+		/// <summary>
+		/// Returns a new instance of the service. The given 
+		/// <paramref name="accessToken"/> is used in each request made by this
+		/// instance.
+		/// </summary>
+		/// <param name="accessToken">The access token to use</param>
+		/// <returns>A new <see cref="MovesService"/> instance</returns>
+		public MovesService Authorized(string accessToken)
 		{
-			this.Credentials.AccessToken = accessToken;
-			return this;
+			return new MovesService(Credentials.ClientId, Credentials.ClientSecret, accessToken);
 		}
 	}
 }
