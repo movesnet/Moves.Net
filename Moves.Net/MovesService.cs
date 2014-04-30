@@ -17,10 +17,12 @@ namespace Moves.Net
 
 			Authentication = new AuthenticationEndpoint(this.Credentials);
 			Places = new PlacesEndpoint(this.Credentials);
+			Profile = new ProfileEndpoint(this.Credentials);
 		}
         
         public AuthenticationEndpoint Authentication { get; private set; }
         public PlacesEndpoint Places { get; private set; }
+		public ProfileEndpoint Profile { get; private set; }
 
 		public MovesService Authorize(string accessToken)
 		{
