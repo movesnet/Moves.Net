@@ -5,8 +5,8 @@ namespace Moves.Net.Endpoints
 {
     public class AuthenticationEndpoint : EndpointBase
     {
-        public AuthenticationEndpoint(Credentials credentials) : base(credentials)
-        { }
+        public AuthenticationEndpoint(Credentials credentials)
+			: base(credentials) { }
 
         public string CreateAuthorizationUrl(string[] scopes)
         {
@@ -17,7 +17,7 @@ namespace Moves.Net.Endpoints
             );                     
         }
 
-        public AccessTokenData ReceiveAccessToken(string authorizationToken, string redirectUri)
+		public MovesResult<AccessTokenData> ReceiveAccessToken(string authorizationToken, string redirectUri)
         {
             var request = CreateRequest(
                 "access_token?grant_type=authorization_code&code={0}&client_id={1}&client_secret={2}&redirect_uri=" + redirectUri,
@@ -28,15 +28,10 @@ namespace Moves.Net.Endpoints
 
             var response = Post(EndpointBase.MovesAuthenticationBaseUrl, request);
 
-            if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                throw MovesException.FromErrorResponse(response);
-            }
-
-            return DeserializeContent<AccessTokenData>(response);
+            return new MovesResult<AccessTokenData>(response);
         }
 
-        public AccessTokenData RefreshAccessToken(string refreshToken)
+		public MovesResult<AccessTokenData> RefreshAccessToken(string refreshToken)
         {
             var request = CreateRequest(
                 "access_token?grant_type=refresh_token&refresh_token={0}&client_id={1}&client_secret={2}",
@@ -47,15 +42,10 @@ namespace Moves.Net.Endpoints
 
             var response = Post(EndpointBase.MovesAuthenticationBaseUrl, request);
 
-            if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                throw MovesException.FromErrorResponse(response);
-            }
-
-            return DeserializeContent<AccessTokenData>(response);
+            return new MovesResult<AccessTokenData>(response);
         }
 
-        public AccessTokenValidation ValidateAccessToken(string accessToken)
+		public MovesResult<AccessTokenValidation> ValidateAccessToken(string accessToken)
         {
             var request = CreateRequest(
                 "tokeninfo?access_token={0}",
@@ -64,12 +54,7 @@ namespace Moves.Net.Endpoints
 
             var response = Get(EndpointBase.MovesAuthenticationBaseUrl, request);
 
-            if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                throw MovesException.FromErrorResponse(response);
-            }
-
-            return DeserializeContent<AccessTokenValidation>(response);
+            return new MovesResult<AccessTokenValidation>(response);
         }
     }
 }

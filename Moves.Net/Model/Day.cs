@@ -3,7 +3,7 @@
 namespace Moves.Net.Model
 {    
     [JsonObject]
-    public class Day
+	public class Day
     {
         [JsonProperty("date")]
         public string Date { get; set; }

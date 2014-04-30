@@ -5,7 +5,7 @@ namespace Moves.Net
     public class MovesService
 	{
         private Credentials _credentials;
-		public MovesService(string clientId, string clientSecret, string accessToken)
+		public MovesService(string clientId, string clientSecret, string accessToken = null)
 		{
             _credentials = new Credentials
             {

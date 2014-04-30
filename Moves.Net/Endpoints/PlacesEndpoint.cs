@@ -9,7 +9,7 @@ namespace Moves.Net.Endpoints
 		public PlacesEndpoint(Credentials credentials)
 			: base(credentials) { }
 
-		private IEnumerable<Day> GetDaily(string dailyString)
+		private MovesResult<IEnumerable<Day>> GetDaily(string dailyString, string etag = null)
 		{
 			var request = CreateRequest(
 				"user/places/daily/{1}?access_token={0}",
@@ -19,27 +19,22 @@ namespace Moves.Net.Endpoints
 
 			var response = Get(request);
 
-			if (response.StatusCode == HttpStatusCode.BadRequest)
-			{
-				throw MovesException.FromErrorResponse(response);
-			}
-
-			return DeserializeContent<Day[]>(response);
+			return new MovesResult<IEnumerable<Day>>(response);
 		}
 
-		public IEnumerable<Day> GetByDay(int year, int month, int day)
+		public MovesResult<IEnumerable<Day>> GetByDay(int year, int month, int day, string etag = null)
 		{
-			return GetDaily(string.Format("{0}-{1}-{2}", year, month.ToString("D2"), day.ToString("D2")));
+			return GetDaily(string.Format("{0}-{1}-{2}", year, month.ToString("D2"), day.ToString("D2")), etag);
 		}
 
-		public IEnumerable<Day> GetByMonth(int year, int month)
+		public MovesResult<IEnumerable<Day>> GetByMonth(int year, int month, string etag = null)
 		{
-			return GetDaily(string.Format("{0}-{1}", year, month.ToString("D2")));
+			return GetDaily(string.Format("{0}-{1}", year, month.ToString("D2")), etag);
 		}
 
-		public IEnumerable<Day> GetByWeek(int year, int weekNr)
+		public MovesResult<IEnumerable<Day>> GetByWeek(int year, int weekNr, string etag = null)
 		{
-			return GetDaily(string.Format("{0}-W{1}", year, weekNr.ToString("D2")));
+			return GetDaily(string.Format("{0}-W{1}", year, weekNr.ToString("D2")), etag);
 		}
 	}
 }

@@ -60,6 +60,7 @@
     <Compile Include="Model\Day.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="MovesException.cs" />
+    <Compile Include="MovesResult.cs" />
     <Compile Include="MovesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

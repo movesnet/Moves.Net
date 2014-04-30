@@ -3,7 +3,7 @@
 namespace Moves.Net.Model
 {
     [JsonObject]
-    public class Segment
+	public class Segment
     {
         [JsonProperty("type")]
         public string Type { get; set; }

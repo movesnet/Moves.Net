@@ -64,15 +64,6 @@ namespace Moves.Net.Endpoints
             client.AddHandler("text/json", deserializer);
 
             return client.Execute(request);
-        }
-
-        protected T DeserializeContent<T>(IRestResponse response)
-        {
-            return DeserializeContent<T>(response.Content);
-        }
-        protected T DeserializeContent<T>(string content)
-        {
-            return JsonConvert.DeserializeObject<T>(content);
-        }      
+        }    
     }
 }

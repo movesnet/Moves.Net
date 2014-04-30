@@ -3,7 +3,7 @@
 namespace Moves.Net.Model
 {
     [JsonObject]
-    public class Place
+	public class Place
     {   
         [JsonProperty("id")]
         public string Id { get; set; }
