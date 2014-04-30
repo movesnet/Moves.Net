@@ -9,7 +9,7 @@ namespace Moves.Net.Model
         public string Date { get; set; }
 
         [JsonProperty("segments")]
-        public Segment Segments { get; set; }
+        public Segment[] Segments { get; set; }
 
         [JsonProperty("lastUpdate")]
         public string LastUpdate { get; set; }
