@@ -6,6 +6,7 @@ namespace Moves.Net.Endpoints
 {
     public class SummaryEndpoint : DailyEndpointBase
     {
-        public SummaryEndpoint(Credentials credentials) : base("summary", credentials) { }
+		public SummaryEndpoint(string baseUrl, Credentials credentials)
+			: base(baseUrl, credentials, "summary") { }
     }
 }

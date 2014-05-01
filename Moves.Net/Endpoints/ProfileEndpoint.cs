@@ -8,14 +8,14 @@ namespace Moves.Net.Endpoints
 {
 	public class ProfileEndpoint : EndpointBase
 	{
-		public ProfileEndpoint(Credentials credentials)
-			:base(credentials) { }
+		public ProfileEndpoint(string baseUrl, Credentials credentials)
+			:base(baseUrl, credentials) { }
 
 		public MovesResult<User> GetUser(string etag = null)
 		{
 			var request = CreateRequest(
 				"user/profile?access_token={0}",
-				this.Credentials.AccessToken
+				Credentials.AccessToken
 			);
 
 			var response = Get(request);

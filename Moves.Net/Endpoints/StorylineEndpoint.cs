@@ -8,7 +8,8 @@ using Moves.Net.Helper;
 namespace Moves.Net.Endpoints
 {
 	public class StorylineEndpoint : DailyEndpointBase
-	{        
-        public StorylineEndpoint(Credentials credentials) : base("storyline", credentials) { }		
+	{
+		public StorylineEndpoint(string baseUrl, Credentials credentials)
+			: base(baseUrl, credentials, "storyline") { }
 	}
 }

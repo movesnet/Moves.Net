@@ -34,8 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Moves.App\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
@@ -51,19 +50,18 @@
   <ItemGroup>
     <Compile Include="Endpoints\ActivityEndpoint.cs" />
     <Compile Include="Endpoints\DailyEndpointBase.cs" />
-    <Compile Include="Endpoints\SummaryEndpoint.cs" />
-    <Compile Include="Endpoints\StorylineEndpoint.cs" />
     <Compile Include="Endpoints\PlaceEndpoint.cs" />
-    <Compile Include="Endpoints\AuthenticationEndpoint.cs" />
     <Compile Include="Endpoints\EndpointBase.cs" />
     <Compile Include="Endpoints\ProfileEndpoint.cs" />
+    <Compile Include="Endpoints\StorylineEndpoint.cs" />
+    <Compile Include="Endpoints\SummaryEndpoint.cs" />
     <Compile Include="Helpers\StringBuilderExtensions.cs" />
     <Compile Include="Model\AccessTokenData.cs" />
     <Compile Include="Model\AccessTokenValidation.cs" />
     <Compile Include="Credentials.cs" />
-    <Compile Include="Model\ActivityList.cs" />
     <Compile Include="Model\Activity.cs" />
-    <Compile Include="Model\Trackpoint.cs" />
+    <Compile Include="Model\ActivityList.cs" />
+    <Compile Include="Model\Summary.cs" />
     <Compile Include="Model\TimeZone.cs" />
     <Compile Include="Model\Error.cs" />
     <Compile Include="Model\Localization.cs" />
@@ -72,12 +70,13 @@
     <Compile Include="Model\Segment.cs" />
     <Compile Include="Model\Day.cs" />
     <Compile Include="Model\Location.cs" />
-    <Compile Include="Model\Summary.cs" />
+    <Compile Include="Model\Trackpoint.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="MovesException.cs" />
     <Compile Include="MovesResult.cs" />
     <Compile Include="MovesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestClientBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
