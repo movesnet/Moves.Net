@@ -11,6 +11,9 @@ namespace Moves.Net.Model
         [JsonProperty("segments")]
         public Segment[] Segments { get; set; }
 
+        [JsonProperty("summary")]
+        public Summary[] Summaries { get; set; }
+
         [JsonProperty("lastUpdate")]
         public string LastUpdate { get; set; }
     }

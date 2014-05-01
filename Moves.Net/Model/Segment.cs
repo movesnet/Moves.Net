@@ -17,6 +17,9 @@ namespace Moves.Net.Model
         [JsonProperty("place")]
         public Place Place { get; set; }
 
+        [JsonProperty("activities")]
+        public Activity[] Activities { get; set; }
+
         [JsonProperty("lastUpdate")]
         public string LastUpdate { get; set; }        
     }

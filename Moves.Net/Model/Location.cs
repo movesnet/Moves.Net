@@ -9,6 +9,6 @@ namespace Moves.Net.Model
         public double Latitude { get; set; }
 
         [JsonProperty("lon")]
-        public double Longitude { get; set; }      
+        public double Longitude { get; set; }
     }
 }

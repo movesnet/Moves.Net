@@ -16,14 +16,20 @@ namespace Moves.Net
             };
 
 			Authentication = new AuthenticationEndpoint(this.Credentials);
-			Places = new PlacesEndpoint(this.Credentials);
+			Places = new PlaceEndpoint(this.Credentials);
 			Profile = new ProfileEndpoint(this.Credentials);
+            Storyline = new StorylineEndpoint(this.Credentials);
+            Summary = new SummaryEndpoint(this.Credentials);
+            Activity = new ActivityEndpoint(this.Credentials);           
 		}
         
         public AuthenticationEndpoint Authentication { get; private set; }
-        public PlacesEndpoint Places { get; private set; }
+        public PlaceEndpoint Places { get; private set; }
+        public StorylineEndpoint Storyline { get; private set; }
+        public SummaryEndpoint Summary { get; private set; }
 		public ProfileEndpoint Profile { get; private set; }
-
+        public ActivityEndpoint Activity { get; private set; }
+        
 		/// <summary>
 		/// Returns a new instance of the service. The given 
 		/// <paramref name="accessToken"/> is used in each request made by this
