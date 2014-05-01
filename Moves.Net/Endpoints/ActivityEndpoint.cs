@@ -11,10 +11,7 @@ namespace Moves.Net.Endpoints
 
         public MovesResult<IEnumerable<ActivityList>> GetSupported(string etag = null)
         {
-            var request = CreateRequest(
-                "activities?access_token={0}",
-                this.Credentials.AccessToken
-            );
+            var request = CreateRequest("activities");
 
             var response = Get(request);
 

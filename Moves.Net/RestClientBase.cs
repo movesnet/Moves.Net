@@ -59,12 +59,16 @@ namespace Moves.Net
 			return ExecuteRequest(baseUrl, request);
 		}
 
-		protected static IRestResponse ExecuteRequest(string baseUrl, IRestRequest request)
+		protected IRestResponse ExecuteRequest(string baseUrl, IRestRequest request)
 		{
 			var deserializer = new JsonDeserializer();
 			var client = new RestClient(baseUrl);
 			client.AddHandler("application/json", deserializer);
 			client.AddHandler("text/json", deserializer);
+
+            if (!string.IsNullOrEmpty(this.Credentials.AccessToken)) {
+                request.AddHeader("Authorization", string.Format("Bearer {0}", this.Credentials.AccessToken));
+            }
 
 			return client.Execute(request);
 		}

@@ -72,9 +72,7 @@ namespace Moves.Net.Endpoints
 			if (timeZone.HasValue)
 			{
 				url.AddParameter("timeZone", timeZone.Value.ToString());
-			}
-
-			url.AddParameter("access_token", this.Credentials.AccessToken);
+			}			
 
 			var requestDaily = CreateRequest(url.ToString());
 

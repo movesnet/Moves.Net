@@ -13,10 +13,7 @@ namespace Moves.Net.Endpoints
 
 		public MovesResult<User> GetUser(string etag = null)
 		{
-			var request = CreateRequest(
-				"user/profile?access_token={0}",
-				Credentials.AccessToken
-			);
+			var request = CreateRequest("user/profile");
 
 			var response = Get(request);
 
