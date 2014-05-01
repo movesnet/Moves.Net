@@ -3,3 +3,5 @@ bin/
 packages
 *.suo
 *.csproj.user
+nuget/lib
+*.nupkg
