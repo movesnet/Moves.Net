@@ -10,7 +10,7 @@ namespace Moves.Net
 {
 	public abstract class RestClientBase
 	{
-		protected Credentials Credentials { get; private set; }        
+		public Credentials Credentials { get; private set; }        
         
 		public string BaseUrl { get; private set; }
 		        
