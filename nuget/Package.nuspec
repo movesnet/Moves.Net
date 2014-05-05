@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>Moves.Net</id>
-    <version>0.1</version>
+    <version>0.2.4</version>
     <authors>Arnoud de Boer, Tim Schlechter</authors>
     <owners>Arnoud de Boer, Tim Schlechter</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -10,12 +10,13 @@
     <iconUrl>http://img.talkandroid.com/uploads/2013/09/Moves_App_Large_Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.Net library to access the moves-app.com API</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>
+    </releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Moves MovesApp Api</tags>
     <dependencies>
       <dependency id="RestSharp" version="104.4.0.0" />
-			<dependency id="Newtonsoft.Json" version="6.0.0.0" />
+      <dependency id="Newtonsoft.Json" version="6.0.0.0" />
     </dependencies>
   </metadata>
 </package>

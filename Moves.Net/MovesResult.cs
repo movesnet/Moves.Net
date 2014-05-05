@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Moves.Net
 {
-	public class MovesResult<T>
+	public class MovesResult<TResult>
 	{
 		public MovesResult(IRestResponse response)
 		{
@@ -22,7 +22,7 @@ namespace Moves.Net
 			}
 			else if (response.StatusCode != HttpStatusCode.NotModified)
 			{
-				Data = JsonConvert.DeserializeObject<T>(response.Content);
+				Data = JsonConvert.DeserializeObject<TResult>(response.Content);
 			}
 		}
 
@@ -30,6 +30,6 @@ namespace Moves.Net
 
 		public HttpStatusCode Status { get; set; }
 
-		public T Data { get; set; }
+        public TResult Data { get; set; }
 	}
 }
