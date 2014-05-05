@@ -64,13 +64,15 @@ namespace Moves.Net
         /// Get a authorization url for authenticating through Moves
         /// </summary>
         /// <param name="scopes"></param>
+        /// <param name="redirectUri"></param>
         /// <returns></returns>
-		public string GetAuthorizationUrl(string[] scopes)
+		public string GetAuthorizationUrl(string[] scopes, string redirectUri)
 		{
-			return string.Format("{0}authorize?response_type=code&client_id={1}&scope={2}",
+			return string.Format("{0}authorize?response_type=code&client_id={1}&scope={2}&redirect_uri={3}",
 				AuthenticationBaseUrl,
 				this.Credentials.ClientId,
-				string.Join(" ", scopes)
+				string.Join(" ", scopes),
+                redirectUri
 			);
 		}
 
@@ -83,10 +85,11 @@ namespace Moves.Net
 		public MovesResult<AccessTokenData> ReceiveAccessToken(string authorizationToken, string redirectUri)
 		{
 			var request = this.CreateRequest(
-				"access_token?grant_type=authorization_code&code={0}&client_id={1}&client_secret={2}&redirect_uri=" + redirectUri,
+				"access_token?grant_type=authorization_code&code={0}&client_id={1}&client_secret={2}&redirect_uri={3}",
 				authorizationToken,
 				this.Credentials.ClientId,
-				this.Credentials.ClientSecret
+				this.Credentials.ClientSecret,
+                redirectUri
 			);
 
 			var response = this.Post(AuthenticationBaseUrl, request);
