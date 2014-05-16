@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using Moves.Net.Helper;
 using Moves.Net.Model;
 using System;
+using System.Collections.Generic;
 using System.Text;
-using Moves.Net.Helper;
 
 namespace Moves.Net.Endpoints
 {
 	public abstract class DailyEndpointBase : EndpointBase
 	{
-		public string ApiName { get; private set; }
+		protected string ApiName { get; private set; }
 
-		public DailyEndpointBase(string baseUrl, Credentials credentials, string apiName)
-			: base(baseUrl, credentials)
+		public DailyEndpointBase(ISimpleRestClient restClient, string apiName)
+			: base(restClient)
 		{
 			this.ApiName = apiName;
 		}
@@ -72,11 +71,9 @@ namespace Moves.Net.Endpoints
 			if (timeZone.HasValue)
 			{
 				url.AddParameter("timeZone", timeZone.Value.ToString());
-			}			
+			}
 
-			var requestDaily = CreateRequest(url.ToString());
-
-			var response = Get(requestDaily);
+			var response = RestClient.Get(url.ToString());
 
 			return new MovesResult<IEnumerable<Day>>(response);
 		}
@@ -154,7 +151,7 @@ namespace Moves.Net.Endpoints
 		/// Get daily result for a requested month
 		/// </summary>
 		/// <param name="year">The year of the requested day</param>
-		/// <param name="month">The month of the requested day</param>        
+		/// <param name="month">The month of the requested day</param>
 		/// <param name="trackPoints">Should the tracking points be included in the result.</param>
 		/// <param name="updatedSince">Return only days which data has been updated since given timestamp in ISO 8601</param>
 		/// <param name="pastDays">How many past days to return, including today (in users current time zone)</param>
@@ -187,7 +184,7 @@ namespace Moves.Net.Endpoints
 		/// Get daily result for a requested week
 		/// </summary>
 		/// <param name="year">The year of the requested week</param>
-		/// <param name="weekNr">The requested week, Uses ISO8601 week-numbering.</param>        
+		/// <param name="weekNr">The requested week, Uses ISO8601 week-numbering.</param>
 		/// <param name="trackPoints">Should the tracking points be included in the result.</param>
 		/// <param name="updatedSince">Return only days which data has been updated since given timestamp in ISO 8601</param>
 		/// <param name="pastDays">How many past days to return, including today (in users current time zone)</param>

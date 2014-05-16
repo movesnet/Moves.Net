@@ -1,14 +1,16 @@
-﻿using System.Linq;
-using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Contrib;
-using RestSharp.Deserializers;
-
-namespace Moves.Net.Endpoints
+﻿namespace Moves.Net.Endpoints
 {
-	public abstract class EndpointBase : RestClientBase
-    {
-		public EndpointBase(string baseUrl, Credentials credentials)
-			: base(baseUrl, credentials) { }
-    }
+	public abstract class EndpointBase
+	{
+		public EndpointBase(ISimpleRestClient restClient)
+		{
+			RestClient = restClient;
+		}
+
+		protected ISimpleRestClient RestClient
+		{
+			get;
+			set;
+		}
+	}
 }

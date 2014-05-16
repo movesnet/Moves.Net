@@ -2,13 +2,13 @@
 
 namespace Moves.Net.Model
 {
-    [JsonObject]
+	[JsonObject]
 	public class Location
-    {
-        [JsonProperty("lat")]
-        public double Latitude { get; set; }
+	{
+		[JsonProperty("lat")]
+		public double Latitude { get; set; }
 
-        [JsonProperty("lon")]
-        public double Longitude { get; set; }
-    }
+		[JsonProperty("lon")]
+		public double Longitude { get; set; }
+	}
 }

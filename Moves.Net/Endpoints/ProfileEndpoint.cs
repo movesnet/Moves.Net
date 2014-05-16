@@ -1,21 +1,17 @@
 ﻿using Moves.Net.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Moves.Net.Endpoints
 {
 	public class ProfileEndpoint : EndpointBase
 	{
-		public ProfileEndpoint(string baseUrl, Credentials credentials)
-			:base(baseUrl, credentials) { }
+		public ProfileEndpoint(ISimpleRestClient restClient)
+			: base(restClient) { }
 
 		public MovesResult<User> GetUser(string etag = null)
 		{
-			var request = CreateRequest("user/profile");
+			var request = RestClient.CreateRequest("user/profile");
 
-			var response = Get(request);
+			var response = RestClient.Get(request);
 
 			return new MovesResult<User>(response);
 		}

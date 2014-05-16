@@ -1,11 +1,7 @@
-﻿using Moves.Net.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RestSharp;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 
 namespace Moves.Net
 {
@@ -15,7 +11,7 @@ namespace Moves.Net
 		{
 			ETag = response.Headers.Where(x => x.Name == "ETag").Select(x => x.Value.ToString()).FirstOrDefault();
 			Status = response.StatusCode;
-			
+
 			if ((int)response.StatusCode >= 400)
 			{
 				throw MovesException.FromErrorResponse(response);
@@ -30,6 +26,6 @@ namespace Moves.Net
 
 		public HttpStatusCode Status { get; set; }
 
-        public TResult Data { get; set; }
+		public TResult Data { get; set; }
 	}
 }

@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using Moves.Net.Model;
-
-namespace Moves.Net.Endpoints
+﻿namespace Moves.Net.Endpoints
 {
 	public class PlaceEndpoint : DailyEndpointBase
 	{
-		public PlaceEndpoint(string baseUrl, Credentials credentials)
-			: base(baseUrl, credentials, "places") { }
+		public PlaceEndpoint(ISimpleRestClient restClient)
+			: base(restClient, "places") { }
 	}
 }
