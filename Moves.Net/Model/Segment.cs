@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace Moves.Net.Model
 {
@@ -9,10 +10,10 @@ namespace Moves.Net.Model
 		public string Type { get; set; }
 
 		[JsonProperty("startTime")]
-		public string StartTime { get; set; }
+		public DateTime StartTime { get; set; }
 
 		[JsonProperty("endTime")]
-		public string EndTime { get; set; }
+		public DateTime EndTime { get; set; }
 
 		[JsonProperty("place")]
 		public Place Place { get; set; }

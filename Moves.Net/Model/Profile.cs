@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace Moves.Net.Model
 {
@@ -6,7 +7,7 @@ namespace Moves.Net.Model
 	public class Profile
 	{
 		[JsonProperty("firstDate")]
-		public string FirstDate { get; set; }
+		public DateTime FirstDate { get; set; }
 
 		[JsonProperty("currentTimeZone")]
 		public TimeZone CurrentTimeZone { get; set; }

@@ -73,7 +73,9 @@ namespace Moves.Net.Endpoints
 				url.AddParameter("timeZone", timeZone.Value.ToString());
 			}
 
-			var response = RestClient.Get(url.ToString());
+			var requestDaily = RestClient.CreateRequest(url.ToString());
+
+			var response = RestClient.Get(requestDaily);
 
 			return new MovesResult<IEnumerable<Day>>(response);
 		}

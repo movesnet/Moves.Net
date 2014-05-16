@@ -56,7 +56,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Testdata.resx</DependentUpon>
     </Compile>
-    <Compile Include="TestableMovesClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

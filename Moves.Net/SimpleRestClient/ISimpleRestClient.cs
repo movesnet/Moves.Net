@@ -12,8 +12,6 @@ namespace Moves.Net
 
 		IRestResponse ExecuteRequest(string baseUrl, IRestRequest request);
 
-		IRestResponse Get(string uri, params object[] args);
-
 		IRestResponse Get(IRestRequest request);
 
 		IRestResponse Get(string baseUrl, IRestRequest request);

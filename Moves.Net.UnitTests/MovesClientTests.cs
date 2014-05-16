@@ -14,32 +14,53 @@ namespace Moves.Net.UnitTests
 {
 	[TestFixture]
     public class MovesClientTests
-    {
-		public MovesClient CreateMovesClient(ISimpleRestClient restClient)
+	{
+		#region Nested Type: TestableMovesClient
+
+		public class TestableMovesClient : MovesClient
+		{
+			public TestableMovesClient(ISimpleRestClient restClient)
+				: base(restClient) { }
+		}
+
+		#endregion
+
+		private MovesClient CreateMovesClient(ISimpleRestClient restClient)
 		{
 			return new TestableMovesClient(restClient);
 		}
 
-		[Test]
-		public void Test()
+		private ISimpleRestClient CreateRestClientMock(HttpStatusCode responseCode, string responseContent)
 		{
-			 var restClient = new Mock<ISimpleRestClient>();
+			var restClient = new Mock<ISimpleRestClient>();
 
-			 restClient
-				 .Setup<IRestResponse>(rest => rest.Get(It.IsAny<string>())).Returns(
-					 Mock.Of<IRestResponse>(resp =>
-						 resp.StatusCode == HttpStatusCode.OK &&
-						 resp.Content == Testdata.SummariesResult &&
-						 resp.Headers == new List<Parameter>()
-					 )
-				 );
+			var response = Mock.Of<IRestResponse>(resp =>
+				resp.StatusCode == responseCode &&
+				resp.Content == responseContent &&
+				resp.Headers == new List<Parameter>()
+			);
+			restClient.Setup<IRestResponse>(rest => rest.Get(It.IsAny<IRestRequest>())).Returns(response);
+			restClient.Setup<IRestResponse>(rest => rest.Get(It.IsAny<string>(), It.IsAny<IRestRequest>())).Returns(response);
+			restClient.Setup<IRestResponse>(rest => rest.Post(It.IsAny<IRestRequest>())).Returns(response);
+			restClient.Setup<IRestResponse>(rest => rest.Post(It.IsAny<string>(), It.IsAny<IRestRequest>())).Returns(response);
+			restClient.Setup<IRestResponse>(rest => rest.ExecuteRequest(It.IsAny<string>(), It.IsAny<IRestRequest>())).Returns(response);
 
-			 var client = CreateMovesClient(restClient.Object);
+			return restClient.Object;
+		}
 
-			 var result = client.Summary.GetByDay(2000, 1, 1);
+		[Test]
+		public void FirstTest()
+		{
+			var client = CreateMovesClient(
+				CreateRestClientMock(
+					responseCode: HttpStatusCode.OK,
+					responseContent: Testdata.SummariesResult
+				)
+			);
 
-			 Assert.NotNull(result);
-			
+			var result = client.Summary.GetByDay(2000, 1, 1);
+
+			Assert.AreEqual(new DateTime(2013, 3, 15), result.Data.First().Date);			
 		}
     }
 }

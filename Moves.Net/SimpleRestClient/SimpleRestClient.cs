@@ -17,11 +17,6 @@ namespace Moves.Net
 			this.Credentials = credentials;
 		}
 
-		public IRestResponse Get(string uri, params object[] args)
-		{
-			return Get(CreateRequest(uri, args));
-		}
-
 		public IRestResponse Get(IRestRequest request)
 		{
 			return Get(BaseUrl, request);

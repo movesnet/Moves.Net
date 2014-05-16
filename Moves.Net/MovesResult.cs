@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using RestSharp;
+using System;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 
@@ -7,6 +10,28 @@ namespace Moves.Net
 {
 	public class MovesResult<TResult>
 	{
+		private class MovesDateConverter : DateTimeConverterBase
+		{
+			public override object ReadJson(JsonReader reader, System.Type objectType, object existingValue, JsonSerializer serializer)
+			{
+				var value = reader.Value.ToString();
+
+				if (value.Length == 8)
+				{
+					return DateTime.ParseExact(reader.Value.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
+				}
+				else
+				{
+					return DateTime.ParseExact(reader.Value.ToString(), "yyyyMMddThhmmssZ", CultureInfo.InvariantCulture);
+				}
+			}
+
+			public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+			{
+				writer.WriteValue(((DateTime)value).ToString("yyyyMMdd"));
+			}
+		}
+
 		public MovesResult(IRestResponse response)
 		{
 			ETag = response.Headers.Where(x => x.Name == "ETag").Select(x => x.Value.ToString()).FirstOrDefault();
@@ -18,7 +43,10 @@ namespace Moves.Net
 			}
 			else if (response.StatusCode != HttpStatusCode.NotModified)
 			{
-				Data = JsonConvert.DeserializeObject<TResult>(response.Content);
+				Data = JsonConvert.DeserializeObject<TResult>(
+					response.Content,
+					new MovesDateConverter()
+				);
 			}
 		}
 
