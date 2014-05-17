@@ -22,7 +22,7 @@ namespace Moves.Net
 				}
 				else
 				{
-					return DateTime.ParseExact(reader.Value.ToString(), "yyyyMMddThhmmssZ", CultureInfo.InvariantCulture);
+					return DateTime.ParseExact(reader.Value.ToString(), "yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture);
 				}
 			}
 
