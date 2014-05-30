@@ -12,15 +12,15 @@ namespace Moves.Net.Model
 		public string Group { get; set; }
 
 		[JsonProperty("duration")]
-		public double Duration { get; set; }
+		public long Duration { get; set; }
 
 		[JsonProperty("distance")]
-		public double Distance { get; set; }
+		public long Distance { get; set; }
 
 		[JsonProperty("steps")]
-		public double Steps { get; set; }
+		public long Steps { get; set; }
 
 		[JsonProperty("calories")]
-		public double Calories { get; set; }
+		public long Calories { get; set; }
 	}
 }
