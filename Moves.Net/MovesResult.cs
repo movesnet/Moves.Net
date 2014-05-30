@@ -18,11 +18,18 @@ namespace Moves.Net
 
 				if (value.Length == 8)
 				{
-					return DateTime.ParseExact(reader.Value.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
+					return DateTime.ParseExact(value, "yyyyMMdd", CultureInfo.InvariantCulture);
 				}
 				else
 				{
-					return DateTime.ParseExact(reader.Value.ToString(), "yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture);
+					if (value.Contains('+'))
+					{
+						return DateTime.ParseExact(value, "yyyyMMddTHHmmssK", CultureInfo.InvariantCulture);
+					}
+					else
+					{
+						return DateTime.ParseExact(value, "yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture);
+					}
 				}
 			}
 
