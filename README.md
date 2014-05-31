@@ -1,4 +1,4 @@
-## General [![Build status](https://ci.appveyor.com/api/projects/status/y0sxm7dxag7nns50)](https://ci.appveyor.com/project/TimSchlechter/moves-net)
+## General [![Build status](https://ci.appveyor.com/api/projects/status/rtco8giqylmxeq27)](https://ci.appveyor.com/project/TimSchlechter/moves-net)
 Moves.Net contains a client proxy which can be used to access the [Moves](http://www.moves-app.com/) [API](https://dev.moves-app.com/docs/api).
 
 ## Usage
