@@ -7,8 +7,8 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
 		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-		<projectUrl>https://github.com/TimSchlechter/Moves.Net</projectUrl>
-		<iconUrl>http://img.talkandroid.com/uploads/2013/09/Moves_App_Large_Icon.png</iconUrl>
+		<projectUrl>https://github.com/movesnet/Moves.Net</projectUrl>
+		<iconUrl>https://dl.dropboxusercontent.com/u/17880436/MovesNet.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>
