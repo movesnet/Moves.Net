@@ -94,6 +94,7 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Moves.Net.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
